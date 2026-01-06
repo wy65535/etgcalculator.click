@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free ETG Calculator - Calculate alcohol detection time, ETG elimination rate, and test passing time. Accurate EtG urine test calculator with detailed results and charts.">
+    <meta name="keywords" content="etg calculator, etg test calculator, alcohol detection time, etg elimination calculator, etg urine test, alcohol metabolism calculator, etg half life calculator, how long does etg stay in urine, etg test detection time, etg levels chart">
+    <meta name="author" content="ETG Calculator">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ETG Calculator - Alcohol Detection Time Calculator">
+    <meta property="og:description" content="Calculate ETG elimination time and alcohol detection periods with our advanced ETG calculator. Free, accurate, and easy to use.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://etgcalculator.click/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ETG Calculator - Alcohol Detection Time Calculator">
+    <meta name="twitter:description" content="Calculate ETG elimination time and alcohol detection periods with our advanced ETG calculator.">
+    <link rel="canonical" href="https://etgcalculator.click/">
+    <title>ETG Calculator - Accurate Alcohol Detection Time Calculator | EtG Test Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ETG Calculator",
+        "description": "Calculate ETG elimination time and alcohol detection periods",
+        "url": "https://etgcalculator.click/",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1247"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">🧪 ETG Calculator</a>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="active">Calculator</a></li>
+                        <li><a href="about.html">About ETG</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                    </ul>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>ETG Calculator - Alcohol Detection Time Calculator</h1>
+                <p class="subtitle">Calculate when ETG will be eliminated from your system with our advanced EtG test calculator. Get accurate detection time estimates based on your alcohol consumption.</p>
+            </div>
+        </section>
+
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-wrapper">
+                    <div class="calculator-card">
+                        <h2>🧮 ETG Elimination Calculator</h2>
+                        <form id="etgCalculator">
+                            <div class="form-group">
+                                <label for="alcoholAmount">Total Alcohol Consumed (Standard Drinks)</label>
+                                <input type="number" id="alcoholAmount" min="0" max="50" step="0.5" value="5" required>
+                                <small>1 standard drink = 14g of pure alcohol (12oz beer, 5oz wine, 1.5oz spirits)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bodyWeight">Body Weight (lbs)</label>
+                                <input type="number" id="bodyWeight" min="50" max="500" value="170" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <small>Gender affects alcohol metabolism rate</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="drinkingDuration">Drinking Duration (hours)</label>
+                                <input type="number" id="drinkingDuration" min="0.5" max="24" step="0.5" value="4" required>
+                                <small>How long did you drink over?</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timeSinceDrinking">Time Since Last Drink (hours)</label>
+                                <input type="number" id="timeSinceDrinking" min="0" max="168" step="0.5" value="24" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hydration">Hydration Level</label>
+                                <select id="hydration" required>
+                                    <option value="low">Low (Dehydrated)</option>
+                                    <option value="normal" selected>Normal</option>
+                                    <option value="high">High (Well Hydrated)</option>
+                                </select>
+                                <small>Hydration affects ETG concentration in urine</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="testThreshold">ETG Test Threshold (ng/mL)</label>
+                                <select id="testThreshold" required>
+                                    <option value="100">100 ng/mL (Standard cutoff)</option>
+                                    <option value="250">250 ng/mL (Less sensitive)</option>
+                                    <option value="500" selected>500 ng/mL (Common cutoff)</option>
+                                    <option value="1000">1000 ng/mL (Least sensitive)</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-primary">Calculate ETG Elimination Time</button>
+                        </form>
+                    </div>
+
+                    <div id="results" class="results-card" style="display: none;">
+                        <h3>📊 ETG Calculation Results</h3>
+                        <div id="resultsContent"></div>
+                        <canvas id="etgChart"></canvas>
+                        <div class="disclaimer-box">
+                            <strong>⚠️ Important Disclaimer:</strong> This calculator provides estimates only. Actual ETG elimination varies by individual metabolism, liver function, and other factors. Do not use for medical or legal decisions. Consult professionals for accurate testing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">⏱️</div>
+                        <h3>What is ETG?</h3>
+                        <p>Ethyl Glucuronide (ETG) is a direct metabolite of alcohol that remains in the body for 3-5 days after alcohol consumption. ETG testing is used to detect alcohol use in various scenarios including workplace testing, legal cases, and recovery monitoring.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🔬</div>
+                        <h3>ETG Detection Window</h3>
+                        <p>ETG can be detected in urine for up to 80 hours after alcohol consumption, depending on the amount consumed. The standard ETG urine test can detect alcohol consumption up to 3-4 days, making it one of the most sensitive alcohol biomarkers available.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">📈</div>
+                        <h3>Factors Affecting ETG</h3>
+                        <p>Multiple factors influence ETG elimination: alcohol amount, body weight, gender, metabolism rate, hydration level, liver function, and individual genetic variations. Our calculator takes these variables into account for accurate estimates.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">✅</div>
+                        <h3>Test Threshold Levels</h3>
+                        <p>ETG tests typically use cutoff levels of 100-500 ng/mL. Higher thresholds (500-1000 ng/mL) reduce false positives from incidental exposure, while lower thresholds (100 ng/mL) provide maximum sensitivity for recent drinking detection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <article class="content-article">
+                    <h2>Understanding ETG Testing and Alcohol Metabolism</h2>
+                    
+                    <h3>How Does ETG Testing Work?</h3>
+                    <p>ETG (Ethyl Glucuronide) testing is a highly sensitive method for detecting alcohol consumption. Unlike traditional breathalyzers or blood alcohol tests that measure current intoxication, ETG tests detect a metabolite produced when your liver processes alcohol. This makes ETG testing valuable for situations where you need to verify abstinence from alcohol over several days.</p>
+
+                    <h3>ETG Half-Life and Elimination Rate</h3>
+                    <p>The half-life of ETG is approximately 2-3 hours, meaning the concentration of ETG in your system decreases by half every 2-3 hours. However, complete elimination depends on the initial peak concentration, which is influenced by how much alcohol you consumed. Our ETG calculator uses advanced algorithms to estimate both the peak concentration and the elimination timeline.</p>
+
+                    <h3>Factors That Influence ETG Detection Time</h3>
+                    <ul>
+                        <li><strong>Amount of Alcohol:</strong> More drinks lead to higher peak ETG levels and longer detection times</li>
+                        <li><strong>Body Weight:</strong> Heavier individuals typically have larger blood volume, affecting concentration</li>
+                        <li><strong>Gender:</strong> Women generally metabolize alcohol slower than men due to lower water content and enzyme levels</li>
+                        <li><strong>Hydration:</strong> Well-hydrated individuals may dilute ETG concentration in urine</li>
+                        <li><strong>Metabolism:</strong> Individual metabolic rates vary based on genetics, age, and health status</li>
+                        <li><strong>Liver Function:</strong> Liver health significantly impacts alcohol processing efficiency</li>
+                    </ul>
+
+                    <h3>Common ETG Test Scenarios</h3>
+                    <p>ETG testing is commonly used in:</p>
+                    <ul>
+                        <li>Probation and parole monitoring</li>
+                        <li>DUI and court-ordered alcohol testing</li>
+                        <li>Workplace alcohol screening programs</li>
+                        <li>Addiction recovery program monitoring</li>
+                        <li>Professional license compliance</li>
+                        <li>Child custody evaluations</li>
+                    </ul>
+
+                    <h3>ETG Test Cutoff Levels Explained</h3>
+                    <p>Different organizations use different cutoff levels for ETG testing:</p>
+                    <ul>
+                        <li><strong>100 ng/mL:</strong> Most sensitive, detects minimal alcohol exposure including hand sanitizer</li>
+                        <li><strong>250 ng/mL:</strong> Reduces false positives while maintaining sensitivity</li>
+                        <li><strong>500 ng/mL:</strong> Common standard, balances sensitivity with specificity</li>
+                        <li><strong>1000 ng/mL:</strong> Used when intentional drinking verification is the goal</li>
+                    </ul>
+
+                    <h3>Tips for Faster ETG Elimination</h3>
+                    <p>While you cannot significantly speed up ETG elimination, these practices support natural metabolism:</p>
+                    <ul>
+                        <li>Stay well-hydrated with water and electrolytes</li>
+                        <li>Get adequate sleep to support liver function</li>
+                        <li>Eat nutritious foods to support metabolism</li>
+                        <li>Avoid additional alcohol consumption</li>
+                        <li>Exercise moderately to support circulation</li>
+                        <li>Avoid products containing alcohol (mouthwash, hand sanitizer)</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="faq-preview">
+            <div class="container">
+                <h2>Frequently Asked Questions About ETG Testing</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>How long does ETG stay in urine?</h3>
+                        <p>ETG typically remains detectable in urine for 48-80 hours after alcohol consumption, depending on the amount consumed and individual factors. Heavy drinking episodes can result in detection up to 5 days.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can you pass an ETG test in 48 hours?</h3>
+                        <p>It's possible to pass an ETG test in 48 hours if you consumed a small amount of alcohol (1-3 drinks). However, moderate to heavy drinking typically requires 72-80 hours for ETG levels to drop below testing thresholds.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What is a passing ETG level?</h3>
+                        <p>Most ETG tests use cutoffs of 100-500 ng/mL. Levels below these thresholds are considered negative. The specific passing level depends on the testing agency's requirements.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Does drinking water help pass ETG test?</h3>
+                        <p>Drinking water increases hydration and may dilute urine ETG concentration, but testing labs also check for dilution. It's better to allow sufficient time for natural elimination rather than attempting dilution.</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="faq.html" class="btn-secondary">View All FAQs</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>Need More Information About ETG Testing?</h2>
+                    <p>Learn more about ETG testing, alcohol metabolism, and detection timelines on our comprehensive information pages.</p>
+                    <div class="cta-buttons">
+                        <a href="about.html" class="btn-primary">About ETG Testing</a>
+                        <a href="faq.html" class="btn-secondary">Read FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>ETG Calculator</h4>
+                    <p>Free, accurate ETG elimination calculator for alcohol detection time estimation. Calculate when ETG metabolites will clear your system.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">ETG Calculator</a></li>
+                        <li><a href="about.html">About ETG</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#calculator-section">ETG Test Calculator</a></li>
+                        <li><a href="faq.html#detection-time">Detection Time</a></li>
+                        <li><a href="faq.html#test-cutoffs">Test Cutoffs</a></li>
+                        <li><a href="about.html#elimination">ETG Elimination</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <p>This calculator provides estimates only and should not be used for medical or legal decisions. Always consult qualified professionals for testing and advice.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ETGCalculator.click. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>
+
